@@ -16,7 +16,7 @@ export const App = () => {
   ])
   const windowId =
     new URLSearchParams(window.location.search).get('id') || FIRST_WINDOW_ID
-  const screenPositions = useScreenPosition({ setCircles, windowId })
+  const screenPositions = useScreenPosition({ circles, setCircles, windowId })
 
   // when screen size changes, change circles positions
   useEffect(() => {
