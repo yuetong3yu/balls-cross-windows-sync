@@ -11,6 +11,7 @@ export const ControlPanel = ({
   screenY,
   windowWidth,
   windowHeight,
+  setCircles,
 }) => {
   const [hasWindowPermission, setWindowPermission] = useState(false)
 
@@ -19,7 +20,7 @@ export const ControlPanel = ({
   }
   const openNewWindow = async () => {
     window.open(
-      `${location.origin}?id=1`,
+      `${location.origin}?id=2`,
       '_blank',
       `width=400,height=400,screenX=${screenX + windowWidth},screenY=${screenY}`
     )
