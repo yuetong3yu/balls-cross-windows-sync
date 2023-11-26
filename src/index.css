@@ -25,9 +25,7 @@ body {
 
   border: 0.1rem solid orange;
   border-radius: 12px;
-}
 
-.buttons-container {
   display: flex;
   flex-direction: column;
   align-items: center;
