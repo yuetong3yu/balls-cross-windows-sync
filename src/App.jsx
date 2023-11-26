@@ -10,13 +10,11 @@ export const App = () => {
       top: 0,
     },
   ])
-  const { screenX, screenY } = useScreenPosition()
-
-  console.log(screenX, screenY)
+  const screenPositions = useScreenPosition()
 
   return (
     <div className="container">
-      <ControlPanel />
+      <ControlPanel {...screenPositions} />
       {circles.map((c, i) => {
         return <CircleMemo {...c} key={i} />
       })}
