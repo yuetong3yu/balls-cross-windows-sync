@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+export const FIRST_WINDOW_ID = '1'
 export const SECONDARY_WINDOW_ID = '2'
 
 const WINDOW_PERMISSION = {

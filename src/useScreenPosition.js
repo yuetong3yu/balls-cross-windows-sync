@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export const useScreenPosition = () => {
+export const useScreenPosition = ({ setCircles, windowId }) => {
   const [screenPosition, setScreenPosition] = useState({
     screenX: window.screenX,
     screenY: window.screenY,

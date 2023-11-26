@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 import { CircleMemo } from './Circle'
-import { ControlPanel, SECONDARY_WINDOW_ID } from './ControlPanel'
+import {
+  ControlPanel,
+  FIRST_WINDOW_ID,
+  SECONDARY_WINDOW_ID,
+} from './ControlPanel'
 import { useScreenPosition } from './useScreenPosition'
 
 export const App = () => {
@@ -10,8 +14,9 @@ export const App = () => {
       top: 0,
     },
   ])
-  const screenPositions = useScreenPosition()
-  const windowId = new URLSearchParams(window.location.search).get('id')
+  const windowId =
+    new URLSearchParams(window.location.search).get('id') || FIRST_WINDOW_ID
+  const screenPositions = useScreenPosition({ setCircles, windowId })
 
   // when screen size changes, change circles positions
   useEffect(() => {
@@ -35,7 +40,7 @@ export const App = () => {
       screenY,
       topBarHeight,
     }
-    localStorage.setItem(windowId || '1', JSON.stringify(circleData))
+    localStorage.setItem(windowId, JSON.stringify(circleData))
   }, [screenPositions])
 
   // remove localStorage when page is unmounted
