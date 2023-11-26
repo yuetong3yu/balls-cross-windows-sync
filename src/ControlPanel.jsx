@@ -17,7 +17,7 @@ export const ControlPanel = () => {
     await window.getScreenDetails()
   }
   const openNewWindow = async () => {
-    alert('new window')
+    window.open(`${location.origin}?id=1`, '_blank', 'width=400,height=400')
   }
 
   // get permission status
