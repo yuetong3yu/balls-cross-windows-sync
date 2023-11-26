@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+const SECONDARY_WINDOW_ID = '2'
+
 const WINDOW_PERMISSION = {
   PENDING: 'prompt',
   DENIED: 'denied',
@@ -14,13 +16,17 @@ export const ControlPanel = ({
   setCircles,
 }) => {
   const [hasWindowPermission, setWindowPermission] = useState(false)
+  const isSecondaryWindow = (() => {
+    const windowID = new URLSearchParams(window.location.search).get('id')
+    return windowID && windowID == SECONDARY_WINDOW_ID
+  })()
 
   const getPermission = async () => {
     await window.getScreenDetails()
   }
   const openNewWindow = async () => {
     window.open(
-      `${location.origin}?id=2`,
+      `${location.origin}?id=${SECONDARY_WINDOW_ID}`,
       '_blank',
       `width=400,height=400,screenX=${screenX + windowWidth},screenY=${screenY}`
     )
@@ -45,9 +51,10 @@ export const ControlPanel = ({
       <div>y: {screenY}</div>
       <div>width: {windowWidth}</div>
       <div>heigth: {windowHeight}</div>
-      {!hasWindowPermission ? (
+      {!hasWindowPermission && (
         <button onClick={getPermission}>Get Permission</button>
-      ) : (
+      )}
+      {!isSecondaryWindow && (
         <button onClick={openNewWindow}>Open New Window</button>
       )}
     </div>
