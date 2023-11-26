@@ -16,3 +16,20 @@ body {
   border-radius: 50%;
   border: 1px solid #333;
 }
+
+.control-panel {
+  padding: 2rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+
+  border: 0.1rem solid orange;
+  border-radius: 12px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
