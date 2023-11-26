@@ -1,7 +1,6 @@
 import { memo } from 'react'
 
 const Circle = ({ left, top }) => {
-  console.log(left, top)
   return (
     <div
       className="circle"
