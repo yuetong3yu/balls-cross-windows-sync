@@ -9,7 +9,12 @@ export const useScreenPosition = () => {
   // repeatly get window position in the screen
   useEffect(() => {
     const getCirclePosition = () => {
-      setScreenPosition({ screenX: window.screenX, screenY: window.screenY })
+      setScreenPosition({
+        screenX: window.screenX,
+        screenY: window.screenY,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
+      })
 
       window.requestAnimationFrame(getCirclePosition)
     }

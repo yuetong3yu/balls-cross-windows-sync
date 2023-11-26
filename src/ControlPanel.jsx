@@ -6,7 +6,12 @@ const WINDOW_PERMISSION = {
   GRANTED: 'granted',
 }
 
-export const ControlPanel = ({ screenX, screenY }) => {
+export const ControlPanel = ({
+  screenX,
+  screenY,
+  windowWidth,
+  windowHeight,
+}) => {
   const [hasWindowPermission, setWindowPermission] = useState(false)
 
   const getPermission = async () => {
@@ -33,6 +38,8 @@ export const ControlPanel = ({ screenX, screenY }) => {
     <div className="control-panel">
       <div>x: {screenX}</div>
       <div>y: {screenY}</div>
+      <div>width: {windowWidth}</div>
+      <div>heigth: {windowHeight}</div>
       {!hasWindowPermission ? (
         <button onClick={getPermission}>Get Permission</button>
       ) : (
