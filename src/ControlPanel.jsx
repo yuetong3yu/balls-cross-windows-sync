@@ -33,19 +33,6 @@ export const ControlPanel = () => {
     getWindowPermissionStatus()
   }, [])
 
-  // repeatly get window position in the screen
-  useEffect(() => {
-    const getCirclePosition = () => {
-      const x = window.screenX
-      const y = window.screenY
-      setWindowPosition({ x, y })
-
-      window.requestAnimationFrame(getCirclePosition)
-    }
-
-    window.requestAnimationFrame(getCirclePosition)
-  }, [])
-
   return (
     <div className="control-panel">
       <div>x: {windowPosition.x}</div>
