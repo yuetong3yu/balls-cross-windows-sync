@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-const SECONDARY_WINDOW_ID = '2'
+export const SECONDARY_WINDOW_ID = '2'
 
 const WINDOW_PERMISSION = {
   PENDING: 'prompt',

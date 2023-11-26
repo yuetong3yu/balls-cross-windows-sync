@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { CircleMemo } from './Circle'
-import { ControlPanel } from './ControlPanel'
+import { ControlPanel, SECONDARY_WINDOW_ID } from './ControlPanel'
 import { useScreenPosition } from './useScreenPosition'
 
 export const App = () => {
@@ -11,6 +11,7 @@ export const App = () => {
     },
   ])
   const screenPositions = useScreenPosition()
+  const windowId = new URLSearchParams(window.location.search).get('id')
 
   // when screen size changes, change circles positions
   useEffect(() => {
@@ -18,7 +19,6 @@ export const App = () => {
     const left = windowWidth / 2 - 100
     const top = windowHeight / 2 - 100
     const topBarHeight = window.outerHeight - window.innerHeight
-    const windowId = new URLSearchParams(window.location.search).get('id')
 
     // update main circle position
     if (windowHeight && windowHeight) {
@@ -37,6 +37,15 @@ export const App = () => {
     }
     localStorage.setItem(windowId || '1', JSON.stringify(circleData))
   }, [screenPositions])
+
+  // remove localStorage when page is unmounted
+  useEffect(() => {
+    window.onunload = () => {
+      if (windowId == SECONDARY_WINDOW_ID) {
+        localStorage.clear(windowId)
+      }
+    }
+  }, [])
 
   return (
     <div className="container">
