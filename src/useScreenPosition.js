@@ -11,17 +11,20 @@ export const useScreenPosition = ({ circles, setCircles, windowId }) => {
   useEffect(() => {
     const syncSecondaryWindow = () => {
       // get the other window data
-      const windowData = JSON.parse(
+      const secondaryWindowData = JSON.parse(
         localStorage.getItem(
           windowId === FIRST_WINDOW_ID ? SECONDARY_WINDOW_ID : FIRST_WINDOW_ID
         )
       )
       // if the othder window exist, cram it in circle array
       setCircles((c) => {
-        if (windowData) {
+        if (secondaryWindowData) {
           c[1] = {
-            left: windowData.left,
-            top: windowData.top,
+            left:
+              secondaryWindowData.screenX +
+              secondaryWindowData.left -
+              window.screenX,
+            top: secondaryWindowData.top - secondaryWindowData.topBarHeight,
           }
           return [...c]
         }
