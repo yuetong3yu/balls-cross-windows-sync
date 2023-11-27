@@ -6,6 +6,7 @@ import {
   SECONDARY_WINDOW_ID,
 } from './ControlPanel'
 import { useScreenPosition } from './useScreenPosition'
+import { Line } from './Line'
 
 export const App = () => {
   const [circles, setCircles] = useState([
@@ -58,6 +59,7 @@ export const App = () => {
       {circles.map((c, i) => {
         return <CircleMemo {...c} key={i} />
       })}
+      <Line circles={circles} />
     </div>
   )
 }

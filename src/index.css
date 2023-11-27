@@ -32,3 +32,12 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 1px;
+  background-color: red;
+  transform-origin: top left;
+}
