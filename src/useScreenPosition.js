@@ -24,7 +24,12 @@ export const useScreenPosition = ({ circles, setCircles, windowId }) => {
               secondaryWindowData.screenX +
               secondaryWindowData.left -
               window.screenX,
-            top: secondaryWindowData.top - secondaryWindowData.topBarHeight,
+            top:
+              secondaryWindowData.screenY +
+              secondaryWindowData.top -
+              window.screenY -
+              (window.outerHeight - window.innerHeight) +
+              secondaryWindowData.topBarHeight,
           }
           return [...c]
         }
