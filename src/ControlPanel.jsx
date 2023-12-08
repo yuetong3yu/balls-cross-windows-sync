@@ -14,7 +14,6 @@ export const ControlPanel = ({
   screenY,
   windowWidth,
   windowHeight,
-  setCircles,
 }) => {
   const [hasWindowPermission, setWindowPermission] = useState(false)
   const isSecondaryWindow = (() => {

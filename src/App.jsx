@@ -55,7 +55,7 @@ export const App = () => {
 
   return (
     <div className="container">
-      <ControlPanel {...screenPositions} setCircles={setCircles} />
+      <ControlPanel {...screenPositions} />
       {circles.map((c, i) => {
         return <CircleMemo {...c} key={i} />
       })}
